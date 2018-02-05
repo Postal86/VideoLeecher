@@ -39,18 +39,23 @@
   <ItemGroup>
     <Compile Include="Commands\CompositeCommand.cs" />
     <Compile Include="Commands\DelegateCommandBase.cs" />
-    <Compile Include="Commands\DelegateCommands.cs" />
+    <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Commands\PropertySupport.cs" />
     <Compile Include="GlobalAssemblyInfo.cs" />
+    <Compile Include="Helpers\FixedSizeQueue.cs" />
+    <Compile Include="IO\FileSystem.cs" />
+    <Compile Include="Native\NativeDelegates.cs" />
+    <Compile Include="Native\NativeDisplay.cs" />
+    <Compile Include="Native\NativeFlags.cs" />
+    <Compile Include="Native\NativeMethods.cs" />
+    <Compile Include="Native\NativeStructs.cs" />
+    <Compile Include="Notification\BindableBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflection\AssemblyUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Events\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="IO\" />
-    <Folder Include="Native\" />
-    <Folder Include="Notification\" />
-    <Folder Include="Reflection\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

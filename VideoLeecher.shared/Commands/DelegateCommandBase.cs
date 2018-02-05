@@ -85,7 +85,7 @@ namespace VideoLeecher.shared.Commands
             HookInpc(canExecuteExpression.Body as  MemberExpression);
         }
 
-        protected void HoopInpc(MemberExpression expression)
+        protected void HookInpc(MemberExpression expression)
         {
             if (expression == null)
                 return;
