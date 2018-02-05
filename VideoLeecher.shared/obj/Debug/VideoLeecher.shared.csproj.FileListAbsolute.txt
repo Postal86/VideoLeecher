@@ -1,0 +1,6 @@
+D:\CSharp_Projects\VideoLeecher.shared\VideoLeecher.shared\bin\Debug\VideoLeecher.shared.dll
+D:\CSharp_Projects\VideoLeecher.shared\VideoLeecher.shared\bin\Debug\VideoLeecher.shared.pdb
+D:\CSharp_Projects\VideoLeecher.shared\VideoLeecher.shared\obj\Debug\VideoLeecher.shared.csprojResolveAssemblyReference.cache
+D:\CSharp_Projects\VideoLeecher.shared\VideoLeecher.shared\obj\Debug\VideoLeecher.shared.csproj.CoreCompileInputs.cache
+D:\CSharp_Projects\VideoLeecher.shared\VideoLeecher.shared\obj\Debug\VideoLeecher.shared.dll
+D:\CSharp_Projects\VideoLeecher.shared\VideoLeecher.shared\obj\Debug\VideoLeecher.shared.pdb
