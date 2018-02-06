@@ -41,6 +41,8 @@
     <Compile Include="Commands\DelegateCommandBase.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\PropertySupport.cs" />
+    <Compile Include="Extensions\DateTime.cs" />
+    <Compile Include="Extensions\Guid.cs" />
     <Compile Include="GlobalAssemblyInfo.cs" />
     <Compile Include="Helpers\FixedSizeQueue.cs" />
     <Compile Include="IO\FileSystem.cs" />
@@ -55,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Events\" />
-    <Folder Include="Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

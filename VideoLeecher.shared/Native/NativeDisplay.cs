@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using static VideoLeecher.shared.Native.NativeDelegates;
-using static VideoLeecher.shared.Native.NativeDisplay;
+using static VideoLeecher.shared.Native.NativeMethods;
 using static VideoLeecher.shared.Native.NativeStructs;
 
 
@@ -106,7 +106,7 @@ namespace VideoLeecher.shared.Native
             DisplayEnumCallback closure = new DisplayEnumCallback();
             MonitorEnumProc proc = new MonitorEnumProc(closure.Callback);
             EnumDisplayMonitorsNative(new HandleRef(null, IntPtr.Zero), IntPtr.Zero, proc, IntPtr.Zero);
-            return closure.Display.Cast<NativeDisplay>();
+            return closure.Displays.Cast<NativeDisplay>() as ICollection<NativeDisplay>;
 
         }
 

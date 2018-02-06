@@ -21,7 +21,19 @@ namespace VideoLeecher.shared.Native
         [ResourceExposure(ResourceScope.None)]
         private static extern bool GetMonitorInfo(HandleRef hMonitor, [In, Out]MonitorInfoEx lpmi);
 
-        public static bool GetMonitorInfoNative(HandleRef  hMonitor, [In, Out]MonitorInfoEx)
+        public static bool GetMonitorInfoNative(HandleRef  hMonitor, [In, Out]MonitorInfoEx lpmi)
+        {
+            return GetMonitorInfo(hMonitor, lpmi);
+        }
+
+        [DllImport("user32.dll")]
+        [ResourceExposure(ResourceScope.None)]
+        private static extern IntPtr MonitorFromWindow(IntPtr hwnd, uint dwFlags);
+
+        public static IntPtr MonitorFromWindowNative(IntPtr hwnd, uint dwFlags)
+        {
+            return MonitorFromWindow(hwnd, dwFlags);
+        }
 
     }
 }
