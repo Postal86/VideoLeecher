@@ -41,8 +41,22 @@
     <Compile Include="Commands\DelegateCommandBase.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\PropertySupport.cs" />
+    <Compile Include="Events\BackgroundEventSubscription.cs" />
+    <Compile Include="Events\DataEventArgs.cs" />
+    <Compile Include="Events\DelegateReference.cs" />
+    <Compile Include="Events\DispatchEventSubscription.cs" />
+    <Compile Include="Events\EmptyPubSubEvent.cs" />
+    <Compile Include="Events\EventBase.cs" />
+    <Compile Include="Events\EventSubscription.cs" />
+    <Compile Include="Events\IDelegateReference.cs" />
+    <Compile Include="Events\IEventSubscription.cs" />
+    <Compile Include="Events\SubscriptionToken.cs" />
     <Compile Include="Extensions\DateTime.cs" />
     <Compile Include="Extensions\Guid.cs" />
+    <Compile Include="Extensions\NameValueCollection.cs" />
+    <Compile Include="Extensions\TimeSpan.cs" />
+    <Compile Include="Extensions\Version.cs" />
+    <Compile Include="Extensions\Xml.cs" />
     <Compile Include="GlobalAssemblyInfo.cs" />
     <Compile Include="Helpers\FixedSizeQueue.cs" />
     <Compile Include="IO\FileSystem.cs" />
@@ -55,8 +69,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\AssemblyUtils.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Events\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

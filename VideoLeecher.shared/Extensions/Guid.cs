@@ -7,7 +7,7 @@ namespace VideoLeecher.shared.Extensions
     {
         public static bool IsEmpty(this Guid value)
         {
-            return value 
+            return value == Guid.Empty;
         }
     }
 }
