@@ -38,6 +38,12 @@
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Models\CropInfo.cs" />
+    <Compile Include="Models\DownloadParameters.cs" />
+    <Compile Include="Models\IVodPlaylistPart.cs" />
+    <Compile Include="Models\IVodPlaylistPartExt.cs" />
+    <Compile Include="Models\LeecherVideo.cs" />
+    <Compile Include="Models\LeecherVideoQuality.cs" />
+    <Compile Include="Models\VodAuthInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
