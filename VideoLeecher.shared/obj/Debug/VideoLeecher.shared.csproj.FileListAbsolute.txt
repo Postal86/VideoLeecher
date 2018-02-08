@@ -4,3 +4,8 @@ D:\CSharp_Projects\VideoLeecher.shared\VideoLeecher.shared\obj\Debug\VideoLeeche
 D:\CSharp_Projects\VideoLeecher.shared\VideoLeecher.shared\obj\Debug\VideoLeecher.shared.csproj.CoreCompileInputs.cache
 D:\CSharp_Projects\VideoLeecher.shared\VideoLeecher.shared\obj\Debug\VideoLeecher.shared.dll
 D:\CSharp_Projects\VideoLeecher.shared\VideoLeecher.shared\obj\Debug\VideoLeecher.shared.pdb
+D:\CSharpStuff\VideoLeecher\VideoLeecher.shared\bin\Debug\VideoLeecher.shared.dll
+D:\CSharpStuff\VideoLeecher\VideoLeecher.shared\bin\Debug\VideoLeecher.shared.pdb
+D:\CSharpStuff\VideoLeecher\VideoLeecher.shared\obj\Debug\VideoLeecher.shared.csproj.CoreCompileInputs.cache
+D:\CSharpStuff\VideoLeecher\VideoLeecher.shared\obj\Debug\VideoLeecher.shared.dll
+D:\CSharpStuff\VideoLeecher\VideoLeecher.shared\obj\Debug\VideoLeecher.shared.pdb

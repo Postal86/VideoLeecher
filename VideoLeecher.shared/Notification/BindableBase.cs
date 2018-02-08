@@ -40,7 +40,7 @@ namespace VideoLeecher.shared.Notification
 
         #region მეთოდები
 
-        public ICollection  GetErrors(string propertyName = null)
+        public IEnumerable  GetErrors(string propertyName = null)
         {
             if (string.IsNullOrWhiteSpace(propertyName))
             {

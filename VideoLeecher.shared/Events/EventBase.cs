@@ -52,8 +52,56 @@ namespace VideoLeecher.shared.Events
 
         }
 
+        protected virtual void InternalPublish(params object[] arguments)
+        {
+            IList<Action<object[]>> executionStrategies = PruneAndReturnStrategies();
 
+            foreach (var executionStrategy in executionStrategies)
+            {
+                executionStrategy(arguments);
+            }
+        }
 
+        protected virtual SubscriptionToken  InternalSubscribe(IEventSubscription eventSubscription)
+        {
+            if (eventSubscription == null)
+            {
+                throw new ArgumentNullException(nameof(eventSubscription));
+            }
+
+            eventSubscription.SubscriptionToken = new SubscriptionToken(Unsubscribe);
+
+            lock(Subscriptions)
+            {
+                Subscriptions.Add(eventSubscription);
+            }
+
+            return eventSubscription.SubscriptionToken;
+        }
+
+        private IList<Action<object[]>> PruneAndReturnStrategies()
+        {
+            IList<Action<object[]>> returnList = new List<Action<object[]>>();
+
+            lock(Subscriptions)
+            {
+                for(int i = Subscriptions.Count - 1; i >= 0; i--)
+                {
+                    Action<object[]> listItem = _subscription[i].GetExecutionStrategy();
+
+                    if (listItem == null)
+                    {
+                        _subscription.RemoveAt(i);
+                    }
+                    else
+                    {
+                        returnList.Add(listItem);
+                    }
+                }
+
+            }
+            return returnList;
+        }
 
 
         #endregion მეთოდები
