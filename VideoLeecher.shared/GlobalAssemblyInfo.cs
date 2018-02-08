@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyProduct("VideoLeecher.shared")]
+[assembly: AssemblyProduct("Video Leecher")]
 [assembly: AssemblyDescription("Twitch and  Youtube  Downloader")]
 [assembly: AssemblyCompany("Postal Interactive")]
 [assembly: AssemblyCopyright("Copyright ©  2018 Achiko Mezvrishvili")]
