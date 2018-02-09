@@ -39,10 +39,13 @@
     </Compile>
     <Compile Include="Models\CropInfo.cs" />
     <Compile Include="Models\DownloadParameters.cs" />
+    <Compile Include="Models\DownloadTask.cs" />
+    <Compile Include="Models\FilenameWildcards.cs" />
     <Compile Include="Models\IVodPlaylistPart.cs" />
     <Compile Include="Models\IVodPlaylistPartExt.cs" />
     <Compile Include="Models\LeecherVideo.cs" />
     <Compile Include="Models\LeecherVideoQuality.cs" />
+    <Compile Include="Models\MainWindowInfo.cs" />
     <Compile Include="Models\VodAuthInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
