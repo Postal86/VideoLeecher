@@ -24,7 +24,7 @@ namespace VideoLeecher.core.Models
 
         public double Width { get; set; }
 
-        public double Height { get; set; } 
+        public double Height { get; set; }
 
         public double Top { get; set; }
 
@@ -50,22 +50,138 @@ namespace VideoLeecher.core.Models
             mainWindowInfoEl.Add(heightEl);
 
             XElement topEl = new XElement(MAINWINDOW_TOP_EL);
-            topEl.SetValue(Left);
+            topEl.SetValue(Top);
             mainWindowInfoEl.Add(topEl);
 
 
+            XElement leftEl = new XElement(MAINWINDOW_LEFT_EL);
+            leftEl.SetValue(Left);
+            mainWindowInfoEl.Add(leftEl);
 
+            XElement isMaximizedEl = new XElement(MAINWINDOW_ISMAXIMIZED_EL);
+            isMaximizedEl.SetValue(IsMaximized);
+            mainWindowInfoEl.Add(isMaximizedEl);
 
+            return mainWindowInfoEl;
         }
-
-
-
-
-
-
 
         #endregion  მეთოდები 
 
 
+        #region  სტატიკური_მეთოდები
+
+        public static MainWindowInfo GetFromXml(XElement mainWindowInfoEl)
+        {
+            MainWindowInfo mainWindowInfo = new MainWindowInfo();
+
+            if (mainWindowInfoEl != null)
+            {
+                XElement widthEl = mainWindowInfoEl.Element(MAINWINDOW_WIDTH_EL);
+
+                if (widthEl != null)
+                {
+                    try
+                    {
+                        mainWindowInfo.Width = widthEl.GetValueAsDouble();
+                    }
+                    catch
+                    {
+                        // Malformed XML
+                        return null;
+                    }
+
+
+                }
+                else
+                {
+                    // Malformed XML
+                    return null;
+                }
+
+                XElement heightEl = mainWindowInfoEl.Element(MAINWINDOW_HEIGHT_EL);
+
+                if (heightEl != null)
+                {
+                    try
+                    {
+                        mainWindowInfo.Height = heightEl.GetValueAsDouble();
+                    }
+                    catch
+                    {
+                        //  Malformed XML
+                        return null;
+                    }
+
+                    XElement topEl = mainWindowInfoEl.Element(MAINWINDOW_TOP_EL);
+
+                    if (topEl != null)
+                    {
+                        try
+                        {
+                            mainWindowInfo.Top = topEl.GetValueAsDouble();
+                        }
+                        catch
+                        {
+                            // Malformed XML
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        //  Malformed XML
+                        return null;
+                    }
+
+                    XElement leftEl = mainWindowInfoEl.Element(MAINWINDOW_LEFT_EL);
+
+                    if (leftEl != null)
+                    {
+                        try
+                        {
+                            mainWindowInfo.Left = leftEl.GetValueAsDouble();
+                        }
+                        catch
+                        {
+                            // Malformed  XML 
+                            return null;
+                        }
+
+
+                    }
+                    else
+                    {
+                        // Malformed  XML 
+                        return null;
+                    }
+
+                    XElement isMaximizedEl = mainWindowInfoEl.Element(MAINWINDOW_ISMAXIMIZED_EL);
+
+                    if (isMaximizedEl != null)
+                    {
+                        try
+                        {
+                            mainWindowInfo.IsMaximized = isMaximizedEl.GetValueAsBool();
+                        }
+                        catch
+                        {
+                            // Malformed  XML
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        //  Malformed  XML
+                        return null;
+                    }
+
+
+                }
+
+            }
+                return mainWindowInfo;
+         }
+            #endregion სტატიკური_მეთოდები
+
     }
 }
+

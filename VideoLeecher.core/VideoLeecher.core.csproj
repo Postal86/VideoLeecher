@@ -37,6 +37,10 @@
     <Compile Include="..\VideoLeecher.shared\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Enums\DownloadState.cs" />
+    <Compile Include="Enums\LoadLimitType.cs" />
+    <Compile Include="Enums\SearchType.cs" />
+    <Compile Include="Enums\VideoType.cs" />
     <Compile Include="Models\CropInfo.cs" />
     <Compile Include="Models\DownloadParameters.cs" />
     <Compile Include="Models\DownloadTask.cs" />
@@ -46,6 +50,10 @@
     <Compile Include="Models\LeecherVideo.cs" />
     <Compile Include="Models\LeecherVideoQuality.cs" />
     <Compile Include="Models\MainWindowInfo.cs" />
+    <Compile Include="Models\MenuCommand.cs" />
+    <Compile Include="Models\Preferences.cs" />
+    <Compile Include="Models\RuntimeData.cs" />
+    <Compile Include="Models\SearchParameters.cs" />
     <Compile Include="Models\VodAuthInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,7 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Attributes\" />
-    <Folder Include="Enums\" />
     <Folder Include="Events\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
