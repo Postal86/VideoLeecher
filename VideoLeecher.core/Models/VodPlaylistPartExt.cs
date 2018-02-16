@@ -20,7 +20,7 @@ namespace VideoLeecher.core.Models
 
         #region კონსტრუქტორები
 
-        public IVodPlaylistPartExt(int index, string extinf, string remoteFile, string urlPrefix, string localFile)
+        public VodPlaylistPartExt(int index, string extinf, string remoteFile, string urlPrefix, string localFile)
         {
             if (string.IsNullOrWhiteSpace(extinf))
             {
@@ -51,7 +51,56 @@ namespace VideoLeecher.core.Models
             _output = extinf + "\n" + localFile;
         }
 
-      #endregion კონსტრუქტორები
+        #endregion კონსტრუქტორები
+
+
+        #region თვისებები
+
+        public  int Index
+        {
+            get
+            {
+                return _index;
+            }
+        }
+
+        public  string DownloadUrl
+        {
+            get
+            {
+                return _downloadUrl;
+            }
+
+        }
+
+
+        public  string LocalFile
+        {
+            get
+            {
+                return _localFile;
+            }
+        }
+
+        public double  Length
+        {
+            get
+            {
+                return _length;
+            }
+        }
+
+
+        #endregion თვისებები
+
+        #region მეთოდები
+
+        public  string GetOutput()
+        {
+            return _output;
+        }
+
+        #endregion მეთოდები
 
     }
 }

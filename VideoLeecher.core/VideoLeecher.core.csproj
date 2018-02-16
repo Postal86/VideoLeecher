@@ -37,10 +37,16 @@
     <Compile Include="..\VideoLeecher.shared\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Attributes\EnumDisplayNameAttribute.cs" />
     <Compile Include="Enums\DownloadState.cs" />
     <Compile Include="Enums\LoadLimitType.cs" />
     <Compile Include="Enums\SearchType.cs" />
     <Compile Include="Enums\VideoType.cs" />
+    <Compile Include="Events\DownloadsCountChangedEvent.cs" />
+    <Compile Include="Events\IsAuthorizedChangedEvent.cs" />
+    <Compile Include="Events\PreferencesSavedEvent.cs" />
+    <Compile Include="Events\RemoveDownloadEvent.cs" />
+    <Compile Include="Events\VideosCountChangedEvent.cs" />
     <Compile Include="Models\CropInfo.cs" />
     <Compile Include="Models\DownloadParameters.cs" />
     <Compile Include="Models\DownloadTask.cs" />
@@ -59,6 +65,7 @@
     <Compile Include="Models\UpdateInfo.cs" />
     <Compile Include="Models\VodAuthInfo.cs" />
     <Compile Include="Models\VodPlaylist.cs" />
+    <Compile Include="Models\VodPlaylistPart.cs" />
     <Compile Include="Models\VodPlaylistPartExt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -68,9 +75,6 @@
       <Name>VideoLeecher.shared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Attributes\" />
-    <Folder Include="Events\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

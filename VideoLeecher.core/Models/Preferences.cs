@@ -178,7 +178,7 @@ namespace VideoLeecher.core.Models
             {
                 return _downloadFileName;
             }
-            set => SetProperty(ref _downloadFolder, value); 
+            set => SetProperty(ref _downloadFileName, value); 
         }
 
 

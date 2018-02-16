@@ -30,21 +30,25 @@ namespace VideoLeecher.core.Models
                 if (line.StartsWith("#EXTINF", StringComparison.OrdinalIgnoreCase))
                 {
                     playlist.Add(new VodPlaylistPartExt(indexCounter, line, lines[i + 1], urlPrefix, Path.Combine(tempDir, partCounter.ToString("DB") + ".ts")));
+                    partCounter++;
+                    i++;
                 }
-
-
+                else
+                {
+                    playlist.Add(new VodPlaylistPart(indexCounter, line));
+                }
+                indexCounter++;
             }
+
+           if (!playlist.Last().GetOutput().Equals("#EXT-X-ENDLIST", StringComparison.OrdinalIgnoreCase))
+            {
+                playlist.Add(new VodPlaylistPart(indexCounter, "#EXT-X-ENDLIST"));
+            }
+
+            return playlist;
         }
 
+         #endregion სტატიკური_მეთოდები
 
-
-
-
-
-
-        #endregion სტატიკური_მეთოდები
-
-
-
-    }
+     }
 }
