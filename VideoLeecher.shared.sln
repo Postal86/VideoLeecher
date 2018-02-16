@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoLeecher.shared", "Vide
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoLeecher.core", "VideoLeecher.core\VideoLeecher.core.csproj", "{C51FDF14-4D44-46D9-BD08-087EF66DB72F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoLeecher.services", "VideoLeecher.services\VideoLeecher.services.csproj", "{36340D8D-D710-413C-8B01-B76CD97DA07F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C51FDF14-4D44-46D9-BD08-087EF66DB72F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C51FDF14-4D44-46D9-BD08-087EF66DB72F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C51FDF14-4D44-46D9-BD08-087EF66DB72F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36340D8D-D710-413C-8B01-B76CD97DA07F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36340D8D-D710-413C-8B01-B76CD97DA07F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36340D8D-D710-413C-8B01-B76CD97DA07F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36340D8D-D710-413C-8B01-B76CD97DA07F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
