@@ -12,7 +12,7 @@ namespace VideoLeecher.services.Services
     {
         #region მეთოდები 
 
-        public  string SubstituteWildcards(string filename, LeecherVideo  video)
+        public  string SubstituteWildcards(string filename, TwitchVideo  video)
         {
             if (video == null)
             {
@@ -29,7 +29,7 @@ namespace VideoLeecher.services.Services
             DateTime recorded = video.RecordedDate;
 
 
-            LeecherVideoQuality quality = video.Qualities.First();
+            TwitchVideoQuality quality = video.Qualities.First();
 
             result = result.Replace(FilenameWildcards.CHANNEL, video.Channel);
             result = result.Replace(FilenameWildcards.GAME, video.Game);
@@ -38,8 +38,8 @@ namespace VideoLeecher.services.Services
             result = result.Replace(FilenameWildcards.TIME24, recorded.ToString("HHmmss", CultureInfo.InvariantCulture));
             result = result.Replace(FilenameWildcards.ID, video.Id);
             result = result.Replace(FilenameWildcards.TITLE, video.Title);
-            result = result.Replace(FilenameWildcards.RES, !string.IsNullOrWhiteSpace(quality.Resolution) ? quality.Resolution : LeecherVideoQuality.UNKNOWN);
-            result = result.Replace(FilenameWildcards.FPS, quality.Fps.HasValue ? quality.Fps.ToString() : LeecherVideoQuality.UNKNOWN);
+            result = result.Replace(FilenameWildcards.RES, !string.IsNullOrWhiteSpace(quality.Resolution) ? quality.Resolution : TwitchVideoQuality.UNKNOWN);
+            result = result.Replace(FilenameWildcards.FPS, quality.Fps.HasValue ? quality.Fps.ToString() : TwitchVideoQuality.UNKNOWN);
 
             result = SubstituteInvalidChars(result, "_");
 

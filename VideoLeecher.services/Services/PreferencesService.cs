@@ -68,6 +68,23 @@ namespace VideoLeecher.services.Services
 
         #endregion კონსტრუქტორი
 
+        #region თვისებები 
+
+        public Preferences  CurrentPreferences
+        {
+            get 
+            {
+                if (_currentPreferences == null)
+                {
+                    _currentPreferences = Load();
+                }
+
+                return _currentPreferences;
+            }
+        }
+
+        #endregion თვისებები
+
         #region მეთოდები 
 
         public void Save(Preferences preferences)
@@ -178,15 +195,222 @@ namespace VideoLeecher.services.Services
                 {
                     XDocument doc = XDocument.Load(configFile);
 
+                    XElement preferencesEl = doc.Root;
 
+                    if (preferencesEl != null)
+                    {
+                        XAttribute prefVersionAttr = preferencesEl.Attribute(PREFERENCES_VERSION_ATTR);
 
+                        if (prefVersionAttr !=  null &&  Version.TryParse(prefVersionAttr.Value, out Version prefVersion))
+                        {
+                            preferences.Version = prefVersion;
+                        }
+                        else
+                        {
+                            preferences.Version = new Version(1, 0);
+                        }
+
+                        XElement appEl = preferencesEl.Element(APP_EL);
+
+                        if (appEl != null)
+                        {
+                            XElement appCheckForUpdateEL = appEl.Element(APP_CHECKFORUPDATES_EL);
+
+                            if (appCheckForUpdateEL != null)
+                            {
+                                try
+                                {
+                                    preferences.AppCheckForUpdates = appCheckForUpdateEL.GetValueAsBool();
+                                }
+                                catch
+                                {
+                                    //  Value  from config  file could not  be loaded, use  default value
+                                }
+                            }
+
+                            XElement appShowDonationButtonEl = appEl.Element(APP_SHOWDONATIONBUTTON_EL);
+
+                            if (appShowDonationButtonEl != null)
+                            {
+                                try
+                                {
+                                    preferences.AppShowDonationButton = appShowDonationButtonEl.GetValueAsBool();
+                                }
+                                catch
+                                {
+                                    //  Value  from config  file could not  be loaded, use  default value
+                                }
+                            }
+                        }
+
+                        XElement searchEl = preferencesEl.Element(SEARCH_EL);
+
+                        if (searchEl != null)
+                        {
+                            XElement searchChannelNameEl = searchEl.Element(SEARCH_CHANNELNAME_EL);
+
+                            if (searchChannelNameEl != null)
+                            {
+                                try
+                                {
+                                    preferences.SearchChannelName = searchChannelNameEl.GetValueAsString();
+                                }
+                                catch
+                                {
+                                    //  Value  from config  file could not  be loaded, use  default value
+                                }
+                            }
+
+                            XElement searchVideoTypeEl = searchEl.Element(SEARCH_VIDEOTYPE_EL);
+
+                            if (searchVideoTypeEl != null)
+                            {
+                                try
+                                {
+                                    preferences.SearchVideoType = searchVideoTypeEl.GetValueAsEnum<VideoType>();
+                                }
+                                catch
+                                {
+                                    // Value  from config  file could not  be loaded, use  default value
+                                }
+                            }
+
+                            XElement searchLoadLastDaysEl = searchEl.Element(SEARCH_LOADLASTDAYS_EL);
+
+                            if (searchLoadLastDaysEl != null)
+                            {
+                                try
+                                {
+                                    preferences.SearchLoadLastDays = searchLoadLastDaysEl.GetValueAsInt();
+                                }
+                                catch
+                                {
+                                    // Value from config file could not be loaded, use default value
+                                }
+                            }
+
+                            XElement searchLoadLastVodsEl = searchEl.Element(SEARCH_LOADLASTVODS_EL);
+
+                            if (searchLoadLastVodsEl != null)
+                            {
+                                try
+                                {
+                                    preferences.SearchLoadLastVods = searchLoadLastVodsEl.GetValueAsInt();
+                                }
+                                catch
+                                {
+                                    // Value from config  file  could not  loaded,  use  default value
+                                }
+
+                            }
+
+                            XElement searchOnStartupEl = searchEl.Element(SEARCH_SEARCHONSTARTUP_EL);
+
+                            if (searchOnStartupEl != null)
+                            {
+                                try
+                                {
+                                    preferences.SearchOnStartup = searchOnStartupEl.GetValueAsBool();
+                                        
+                                }
+                                catch
+                                {
+                                    //  Value from config file could not be loaded, use default value
+                                }
+
+                            }
+                        }
+                    }
+
+                    XElement downloadEl = preferencesEl.Element(DOWNLOAD_EL);
+
+                    if (downloadEl != null)
+                    {
+                        XElement downloadTempFolderEl = downloadEl.Element(DOWNLOAD_TEMPFOLDER_EL);
+
+                        if (downloadTempFolderEl != null)
+                        {
+                            try
+                            {
+                                preferences.DownloadTempFolder = downloadTempFolderEl.GetValueAsString();
+                            }
+                            catch
+                            {
+                                //  Value from config  file  could not be  loaded, use default value
+                            }
+
+                        }
+
+                        XElement downloadFolderEl = downloadEl.Element(DOWNLOAD_FOLDER_EL);
+
+                        if (downloadFolderEl != null)
+                        {
+                            try
+                            {
+                                preferences.DownloadFolder = downloadFolderEl.GetValueAsString();
+                            }
+                            catch
+                            {
+                                // Value from config  file  could  not be loaded,  use  default  value
+                            }
+                        }
+
+                        XElement downloadFileNameEl = downloadEl.Element(DOWNLOAD_FILENAME_EL);
+
+                        if (downloadFileNameEl  != null)
+                        {
+                            try
+                            {
+                                preferences.DownloadFileName = downloadFileNameEl.GetValueAsString();
+                            }
+                            catch
+                            {
+                                //  Value  from config  file could  not be loaded,  use  default value
+                            }
+                        }
+
+                        XElement downloadRemoveCompletedEl = downloadEl.Element(DOWNLOAD_REMOVECOMPLETED_EL);
+
+                        if (downloadRemoveCompletedEl != null)
+                        {
+                            try
+                            {
+                                preferences.DownloadRemoveCompleted = downloadRemoveCompletedEl.GetValueAsBool();
+                            }
+                            catch
+                            {
+                                 //  Value  from config  file could not  be  loaded,  use  default value
+                            }
+                        }
+                    }
 
                 }
 
 
+                return preferences;
             }
 
+        }
 
+        public Preferences  CreateDefault()
+        {
+            Preferences preferences = new Preferences()
+            {
+                Version = _tileVersion,
+                AppCheckForUpdates = true,
+                AppShowDonationButton = true,
+                SearchChannelName = null,
+                SearchVideoType = VideoType.Broadcast,
+                SearchLoadLimitType = LoadLimitType.Timespan,
+                SearchLoadLastDays = 10,
+                SearchLoadLastVods = 10,
+                SearchOnStartup = false,
+                DownloadTempFolder = _folderService.GetTempFolder(),
+                DownloadFolder = _folderService.GetDownloadFolder(),
+                DownloadFileName = FilenameWildcards.DATE + "_" + FilenameWildcards.ID + "_" + FilenameWildcards.GAME + ".mp4",
+
+            };
+            return preferences;
         }
 
 

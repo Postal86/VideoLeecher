@@ -53,10 +53,10 @@
     <Compile Include="Models\FilenameWildcards.cs" />
     <Compile Include="Models\IVodPlaylistPart.cs" />
     <Compile Include="Models\IVodPlaylistPartExt.cs" />
-    <Compile Include="Models\LeecherAuthInfo.cs" />
-    <Compile Include="Models\LeecherVideo.cs" />
-    <Compile Include="Models\LeecherVideoDownload.cs" />
-    <Compile Include="Models\LeecherVideoQuality.cs" />
+    <Compile Include="Models\TwitchAuthInfo.cs" />
+    <Compile Include="Models\TwitchVideo.cs" />
+    <Compile Include="Models\TwitchVideoDownload.cs" />
+    <Compile Include="Models\TwitchVideoQuality.cs" />
     <Compile Include="Models\MainWindowInfo.cs" />
     <Compile Include="Models\MenuCommand.cs" />
     <Compile Include="Models\Preferences.cs" />

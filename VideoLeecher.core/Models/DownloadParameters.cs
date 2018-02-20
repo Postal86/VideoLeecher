@@ -11,8 +11,8 @@ namespace VideoLeecher.core.Models
     {
         #region ველები
 
-        private LeecherVideo _video;
-        private LeecherVideoQuality _quality;
+        private TwitchVideo _video;
+        private TwitchVideoQuality _quality;
         private VodAuthInfo _vodAuthInfo;
 
         private string _folder;
@@ -31,7 +31,7 @@ namespace VideoLeecher.core.Models
 
         #region კონსტრუქტორები
 
-        public DownloadParameters(LeecherVideo video, LeecherVideoQuality quality, VodAuthInfo vodAuthInfo, string folder, string filename)
+        public DownloadParameters(TwitchVideo video, TwitchVideoQuality quality, VodAuthInfo vodAuthInfo, string folder, string filename)
         {
             if (string.IsNullOrWhiteSpace(folder))
             {
@@ -58,7 +58,7 @@ namespace VideoLeecher.core.Models
 
         #region თვისებები
 
-        public LeecherVideo  Video
+        public TwitchVideo  Video
         {
             get
             {
@@ -66,7 +66,7 @@ namespace VideoLeecher.core.Models
             }
         }
 
-        public LeecherVideoQuality  Quality
+        public TwitchVideoQuality  Quality
         {
             get
             {
