@@ -78,6 +78,7 @@
     <Compile Include="Interfaces\IUpdateService.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Download\Download.cs" />
     <Compile Include="Services\FilenameService.cs" />
     <Compile Include="Services\FolderService.cs" />
     <Compile Include="Services\LogService.cs" />
@@ -107,6 +108,8 @@
       <Name>VideoLeecher.shared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\Processing\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
