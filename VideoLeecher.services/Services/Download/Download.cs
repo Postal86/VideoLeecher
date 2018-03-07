@@ -34,7 +34,7 @@ namespace VideoLeecher.services.Services.Download
 
             if (fileInfoList.Count == 0)
             {
-                throw  new ArgumentException("ლისტის  კონტეინერში ერთი ელემენტი მაინც უნდა იყოს", nameof(fileInfoList));
+                throw  new ArgumentException("ლისტის  კონტეინერში მინიმუმ ერთი ელემენტი  უნდა იყოს", nameof(fileInfoList));
             }
 
             CheckPriority(priority);
@@ -49,6 +49,73 @@ namespace VideoLeecher.services.Services.Download
 
         #endregion კონსტრუქტორი
 
+
+        #region თვისებები
+
+        public int Priority
+        {
+
+            get => _priority;
+            set {
+
+                CheckPriority(value);
+                _priority = value;
+                }
+
+
+        }
+
+
+        public DownloadState State => _state;
+
+        public int Rate { get; set; }
+
+
+        #endregion თვისებები
+
+        #region მეთოდები
+
+        private void CheckPriority(int priority)
+        {
+            if (priority < 0)
+            {
+                throw new ArgumentException("უარყოფითი მნიშვნელობა  არ არის მისაღები.", nameof(priority));
+            }
+        }
+
+        public void Start()
+        {
+
+        }
+
+        public void Pause()
+        {
+
+        }
+
+        public void Resume()
+        {
+
+        }
+
+        public void Cancel()
+        {
+
+        }
+
+
+        #endregion მეთოდები
+
+        #region ივენთები
+
+        public event EventHandler<DownloadEventArgs> StateChanged;
+
+        private void FireStateChanged()
+        {
+            StateChanged?.Invoke(this, new DownloadEventArgs(this));
+        }
+
+        #endregion ივენთები
 
     }
 }
