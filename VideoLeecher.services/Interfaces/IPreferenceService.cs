@@ -6,6 +6,8 @@ namespace VideoLeecher.services.Interfaces
     {
         Preferences CurrentPreferences { get; }
 
+        bool IsChannelInFavourites(string channel);
+
         void Save(Preferences preferecnces);
 
         Preferences CreateDefault();

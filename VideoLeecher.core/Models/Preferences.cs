@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using VideoLeecher.core.Enums;
+using VideoLeecher.shared.Helpers;
 using VideoLeecher.shared.IO;
 using VideoLeecher.shared.Notification;
 
@@ -15,6 +17,8 @@ namespace VideoLeecher.core.Models
         private bool _appCheckForUpdates;
 
         private bool _appShowDonationButton;
+
+        private RangeObservableCollection<string> _searchFavouriteChannels;
 
         private string _searchChannelName;
 
@@ -34,7 +38,13 @@ namespace VideoLeecher.core.Models
 
         private string _downloadFileName;
 
+        private bool _downloadSubfoldersForFav;
+
         private bool _downloadRemoveCompleted;
+
+        private bool _miscUserExternalPlayer;
+
+        private string _miscExternalPlayer;
 
         #endregion ველები
 
@@ -78,6 +88,47 @@ namespace VideoLeecher.core.Models
             {
                 SetProperty(ref _appShowDonationButton, value);
             }
+        }
+
+
+        public bool MiscUseExternalPlayer
+        {
+            get
+            {
+                return _miscUseExternalPlayer;
+            }
+            set
+            {
+                SetProperty(ref _miscUserExternalPlayer, value);
+            }
+
+        }
+
+        public string MiscExternalPlayer
+        {
+            get
+            {
+                return _miscExternalPlayer;
+            }
+
+            set
+            {
+                SetProperty(ref  _miscExternalPlayer, value);
+            }
+        }
+
+        public RangeObservableCollection<string> SearchFavouriteChannels
+        {
+            get
+            {
+                if (_searchFavouriteChannels == null)
+                {
+                    _searchFavouriteChannels = new RangeObservableCollection<string>();
+                }
+
+                return _searchFavouriteChannels;
+            }
+
         }
 
 
@@ -180,6 +231,8 @@ namespace VideoLeecher.core.Models
             }
             set => SetProperty(ref _downloadFileName, value); 
         }
+
+
 
 
 

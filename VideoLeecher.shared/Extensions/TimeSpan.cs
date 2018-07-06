@@ -5,10 +5,16 @@ namespace VideoLeecher.shared.Extensions
 {
    public static  class TimeSpanExtensions
     {
-        public static string ToDaylesString(this TimeSpan  value)
+        public static string ToDaylessString(this TimeSpan  value)
         {
             return string.Format("{0}:{1}:{2}", ((value.Days * 24) + value.Hours).ToString("00"), value.Minutes.ToString("00"),  value.Seconds.ToString("00"));
         }
+
+        public static  string ToShortDaylessString(this TimeSpan  value)
+        {
+            return string.Format("{0}{1}{2}", value.GetDaysInHours().ToString("00"), value.Minutes.ToString("00"), value.Seconds.ToString("00"));
+        }
+
 
         public static int GetDaysInHours(this TimeSpan value)
         {

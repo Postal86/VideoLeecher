@@ -87,6 +87,25 @@ namespace VideoLeecher.services.Services
 
         #region მეთოდები 
 
+        public bool IsChannelInFavourites(string channel)
+        {
+            if (string.IsNullOrWhiteSpace(channel))
+            {
+                return false;
+            }
+
+            if (CurrentPreferences.SearchChannelName.Equals(channel, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            string  existingEntry =  CurrentPreferences.SearchF
+
+        }
+
+
+
+
         public void Save(Preferences preferences)
         {
 

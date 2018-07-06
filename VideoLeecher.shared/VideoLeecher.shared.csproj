@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VideoLeecher.shared</RootNamespace>
     <AssemblyName>VideoLeecher.shared</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -63,6 +64,7 @@
     <Compile Include="Extensions\Xml.cs" />
     <Compile Include="GlobalAssemblyInfo.cs" />
     <Compile Include="Helpers\FixedSizeQueue.cs" />
+    <Compile Include="Helpers\RangeObservableCollection.cs" />
     <Compile Include="IO\FileSystem.cs" />
     <Compile Include="Native\NativeDelegates.cs" />
     <Compile Include="Native\NativeDisplay.cs" />

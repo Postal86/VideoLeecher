@@ -20,5 +20,8 @@
 
         public static string ID = "{id}";
 
+        public static string START = "{start}";
+
+        public static string END = "{end}";
    }
 }

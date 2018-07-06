@@ -9,3 +9,4 @@ D:\CSharpStuff\VideoLeecher\VideoLeecher.shared\bin\Debug\VideoLeecher.shared.pd
 D:\CSharpStuff\VideoLeecher\VideoLeecher.shared\obj\Debug\VideoLeecher.shared.csproj.CoreCompileInputs.cache
 D:\CSharpStuff\VideoLeecher\VideoLeecher.shared\obj\Debug\VideoLeecher.shared.dll
 D:\CSharpStuff\VideoLeecher\VideoLeecher.shared\obj\Debug\VideoLeecher.shared.pdb
+D:\CSharpStuff\VideoLeecher\VideoLeecher.shared\obj\Debug\VideoLeecher.shared.csprojAssemblyReference.cache
