@@ -133,7 +133,7 @@ namespace VideoLeecher.core.Models
         {
             get
             {
-                return _length.ToDaylesString();
+                return _length.ToDaylessString();
             }
         }
 

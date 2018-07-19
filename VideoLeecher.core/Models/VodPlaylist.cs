@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace VideoLeecher.core.Models
 {
-   public  class VodPlaylist : List<IVodPlaylistPart>
+   public  class VodPlaylist : List<VodPlaylistPart>
    {
         #region სტატიკური_მეთოდები
 
@@ -29,7 +29,7 @@ namespace VideoLeecher.core.Models
 
                 if (line.StartsWith("#EXTINF", StringComparison.OrdinalIgnoreCase))
                 {
-                    playlist.Add(new VodPlaylistPartExt(indexCounter, line, lines[i + 1], urlPrefix, Path.Combine(tempDir, partCounter.ToString("DB") + ".ts")));
+                    playlist.Add(new VodPlaylistPart(indexCounter, line, lines[i + 1], urlPrefix, Path.Combine(tempDir, partCounter.ToString("DB") + ".ts")));
                     partCounter++;
                     i++;
                 }
@@ -40,10 +40,7 @@ namespace VideoLeecher.core.Models
                 indexCounter++;
             }
 
-           if (!playlist.Last().GetOutput().Equals("#EXT-X-ENDLIST", StringComparison.OrdinalIgnoreCase))
-            {
-                playlist.Add(new VodPlaylistPart(indexCounter, "#EXT-X-ENDLIST"));
-            }
+
 
             return playlist;
         }

@@ -205,7 +205,7 @@ namespace VideoLeecher.core.Models
         {
             get
             {
-                return CroppedLength.ToDaylesString();
+                return CroppedLength.ToDaylessString();
             }
         }
 
@@ -276,7 +276,7 @@ namespace VideoLeecher.core.Models
 
                     if (_cropStartTime < TimeSpan.Zero ||  _cropStartTime > videoLength)
                     {
-                        AddError(currentProperty, "Please  enter a value between '" + TimeSpan.Zero.ToString() + "' and '" + videoLength.ToDaylesString() + "'!'");
+                        AddError(currentProperty, "Please  enter a value between '" + TimeSpan.Zero.ToString() + "' and '" + videoLength.ToDaylessString() + "'!'");
                     }
                     else if (CroppedLength.TotalSeconds < 5)
                     {
@@ -298,7 +298,7 @@ namespace VideoLeecher.core.Models
 
                     if (_cropEndTime < TimeSpan.Zero || _cropEndTime > videoLength)
                     {
-                        AddError(currentProperty, "Please enter  a value  between " + TimeSpan.Zero.ToString() + "  and " + videoLength.ToDaylesString() + "'!'");
+                        AddError(currentProperty, "Please enter  a value  between " + TimeSpan.Zero.ToString() + "  and " + videoLength.ToDaylessString() + "'!'");
                     }
                     else if (_cropStart &&  (_cropEndTime <= _cropStartTime))
                     {

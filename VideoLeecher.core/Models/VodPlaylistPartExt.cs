@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace VideoLeecher.core.Models
 {
-    public class VodPlaylistPartExt : IVodPlaylistPartExt
+    public class VodPlaylistPart : IVodPlaylistPartExt
     {
         #region ველები
 
@@ -20,7 +20,7 @@ namespace VideoLeecher.core.Models
 
         #region კონსტრუქტორები
 
-        public VodPlaylistPartExt(int index, string extinf, string remoteFile, string urlPrefix, string localFile)
+        public VodPlaylistPart(int index, string extinf, string remoteFile, string urlPrefix, string localFile)
         {
             if (string.IsNullOrWhiteSpace(extinf))
             {

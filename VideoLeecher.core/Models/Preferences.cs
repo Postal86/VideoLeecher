@@ -95,7 +95,7 @@ namespace VideoLeecher.core.Models
         {
             get
             {
-                return _miscUseExternalPlayer;
+                return _miscUserExternalPlayer;
             }
             set
             {

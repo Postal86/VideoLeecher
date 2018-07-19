@@ -1,0 +1,2 @@
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\obj\Debug\VideoLeecher.services.csprojAssemblyReference.cache
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\obj\Debug\VideoLeecher.services.csproj.CoreCompileInputs.cache

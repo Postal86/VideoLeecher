@@ -6,3 +6,4 @@ D:\CSharpStuff\VideoLeecher\VideoLeecher.core\obj\Debug\VideoLeecher.core.csproj
 D:\CSharpStuff\VideoLeecher\VideoLeecher.core\obj\Debug\VideoLeecher.core.csproj.CoreCompileInputs.cache
 D:\CSharpStuff\VideoLeecher\VideoLeecher.core\obj\Debug\VideoLeecher.core.dll
 D:\CSharpStuff\VideoLeecher\VideoLeecher.core\obj\Debug\VideoLeecher.core.pdb
+D:\CSharpStuff\VideoLeecher\VideoLeecher.core\obj\Debug\VideoLeecher.core.csprojAssemblyReference.cache

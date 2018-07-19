@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Xml.Linq;
 using VideoLeecher.core.Enums;
 using VideoLeecher.core.Events;
@@ -99,8 +100,14 @@ namespace VideoLeecher.services.Services
                 return true;
             }
 
-            string  existingEntry =  CurrentPreferences.SearchF
+            string existingEntry = CurrentPreferences.SearchFavouriteChannels.FirstOrDefault(c => c.Equals(channel, StringComparison.OrdinalIgnoreCase));
 
+            if (!string.IsNullOrWhiteSpace(existingEntry))
+            {
+                return true;
+            }
+
+            return false;
         }
 
 
