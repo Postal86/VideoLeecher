@@ -21,7 +21,7 @@ namespace VideoLeecher.core.Models
 
         private object _logLockObject;
 
-        private int _progress;
+        private double _progress;
 
         private object _progressLockObject;
 
@@ -108,7 +108,7 @@ namespace VideoLeecher.core.Models
             }
         }
 
-        public int Progress
+        public double Progress
         {
             get
             {
@@ -177,7 +177,7 @@ namespace VideoLeecher.core.Models
             }
         }
 
-        public void  SetProgress(int progress)
+        public void  SetProgress(double progress)
         {
 
             lock(_progressLockObject)
@@ -199,6 +199,14 @@ namespace VideoLeecher.core.Models
             lock (_isProcessingLockObject)
             {
                 IsProcessing = isProcessing;
+            }
+        }
+
+        public void SetIsIndeterminate(bool isIndeterminate)
+        {
+            lock (_isIndeterminateLockObject)
+            {
+                IsIndeterminate = isIndeterminate;
             }
         }
 

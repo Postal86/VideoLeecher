@@ -67,7 +67,6 @@
     <Compile Include="Models\VodAuthInfo.cs" />
     <Compile Include="Models\VodPlaylist.cs" />
     <Compile Include="Models\VodPlaylistPart.cs" />
-    <Compile Include="Models\VodPlaylistPartExt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
