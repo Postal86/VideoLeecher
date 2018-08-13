@@ -37,7 +37,7 @@ namespace VideoLeecher.core.Models
 
 
 
-        #region თვისებები
+        #endregion თვისებები
 
 
 

@@ -1,2 +1,16 @@
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\bin\Debug\VideoLeecher.services.dll.config
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\bin\Debug\VideoLeecher.services.dll
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\bin\Debug\VideoLeecher.services.pdb
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\bin\Debug\Newtonsoft.Json.dll
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\bin\Debug\Ninject.dll
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\bin\Debug\VideoLeecher.core.dll
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\bin\Debug\VideoLeecher.shared.dll
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\bin\Debug\VideoLeecher.core.pdb
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\bin\Debug\VideoLeecher.shared.pdb
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\bin\Debug\Newtonsoft.Json.xml
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\bin\Debug\Ninject.xml
 D:\CSharpStuff\VideoLeecher\VideoLeecher.services\obj\Debug\VideoLeecher.services.csprojAssemblyReference.cache
 D:\CSharpStuff\VideoLeecher\VideoLeecher.services\obj\Debug\VideoLeecher.services.csproj.CoreCompileInputs.cache
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\obj\Debug\VideoLeecher.services.csproj.CopyComplete
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\obj\Debug\VideoLeecher.services.dll
+D:\CSharpStuff\VideoLeecher\VideoLeecher.services\obj\Debug\VideoLeecher.services.pdb

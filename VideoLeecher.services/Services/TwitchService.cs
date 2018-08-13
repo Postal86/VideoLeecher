@@ -4,7 +4,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -160,6 +159,8 @@ namespace VideoLeecher.services.Services
                 FireVideosCountChanged();
             }
         }
+
+        public ObservableCollection<TwitchVideoDownload> Downloads => throw new NotImplementedException();
 
         #endregion თვისებები
 
@@ -736,6 +737,8 @@ namespace VideoLeecher.services.Services
 
                             cancellationToken.ThrowIfCancellationRequested();
 
+                            string playlistUrl = RetrievePlaylistUrlForQuality(log, quality, vodId, vodAuthInfo);
+
                             VodPlaylist vodPlaylist = RetrieveVodPlaylist(log, tempDir, playlistUrl);
 
                             cancellationToken.ThrowIfCancellationRequested();
@@ -1182,7 +1185,7 @@ namespace VideoLeecher.services.Services
 
                 do 
                 {
-                    using (WebClient webClient = new CreateTwitchWebClient())
+                    using (WebClient webClient =  CreateTwitchWebClient())
                     {
                         webClient.QueryString.Add("limit",  TWITCH_MAX_LOAD_LIMIT.ToString());
                         webClient.QueryString.Add("offset", offset.ToString());
@@ -1196,24 +1199,187 @@ namespace VideoLeecher.services.Services
                             total = gamesResponseJson.Value<int>("_total");
                         }
 
-                        foreach ()
+                        foreach (JObject  gamesJson  in gamesResponseJson.Value<JArray>("top"))
                         {
+                            JObject gameJson = gamesJson.Value<JObject>("game");
 
+                            string name = gameJson.Value<string>("name").ToLowerInvariant();
+                            Uri gameThumb = new Uri(gameJson.Value<JObject>("box").Value<string>("medium"));
+
+                            if (!_gameThumbnails.ContainsKey(name))
+                            {
+                                _gameThumbnails.Add(name, gameThumb);
+                            }
                         }
 
                     }
 
-
-                } while ();
+                    offset += TWITCH_MAX_LOAD_LIMIT;
+                } while (offset < total);
 
             }
             catch
             {
-
+                // Thumbnail loading should not affect the rest of the application
             }
         }
 
+        public  List<TwitchVideoQuality>  ParseQualities(JObject  resolutionJson,  JObject  fpsJson)
+        {
+            List<TwitchVideoQuality> qualities = new List<TwitchVideoQuality>();
 
+            Dictionary<string, string> fpsList = new Dictionary<string, string>();
+
+            if (fpsJson != null)
+            {
+                foreach (JProperty fps in  fpsJson.Values<JProperty>())
+                {
+                    fpsList.Add(fps.Name, ((int)Math.Round(fps.Value.Value<double>(), 0)).ToString());
+                }
+            }
+
+            if (resolutionJson != null)
+            {
+                foreach(JProperty resolution in resolutionJson.Values<JProperty>())
+                {
+                    string value = resolution.Value.Value<string>();
+                    string qualityId = resolution.Name;
+                    string fps  =  fpsList.ContainsKey(qualityId) ? fpsList[qualityId] : null;
+
+                    qualities.Add(new TwitchVideoQuality(qualityId, value, fps));
+                }
+            }
+
+            if (fpsList.ContainsKey(TwitchVideoQuality.QUALITY_AUDIO))
+            {
+                qualities.Add(new TwitchVideoQuality(TwitchVideoQuality.QUALITY_AUDIO));
+            }
+
+            if (!qualities.Any())
+            {
+                qualities.Add(new TwitchVideoQuality(TwitchVideoQuality.QUALITY_SOURCE));
+            }
+
+            qualities.Sort();
+
+            return qualities;
+        }
+
+        public  void  Pause()
+        {
+            _paused = false;
+            _downloadTimer.Change(0, TIMER_INTERVAL);
+        }
+
+        public void  Resume()
+        {
+            _paused = false;
+            _downloadTimer.Change(0, TIMER_INTERVAL);
+        }
+
+        public bool CanShutdown()
+        {
+            Monitor.Enter(_changeDownloadLockObject);
+
+            try
+            {
+                return !_downloads.Where(d => d.DownloadState == DownloadState.Downloading ||  d.DownloadState == DownloadState.Queued).Any();
+
+            }
+            finally
+            {
+                Monitor.Exit(_changeDownloadLockObject);
+            }
+                
+         }
+
+
+        public  void  Shutdown()
+        {
+            Pause();
+
+            foreach(DownloadTask downloadTask  in _downloadTasks.Values)
+            {
+                downloadTask.CancellationTokenSource.Cancel();
+            }
+
+            List<Task> tasks = _downloadTasks.Values.Select(v => v.Task).ToList();
+            tasks.AddRange(_downloadTasks.Values.Select(v => v.ContinueTask).ToList());
+
+            try
+            {
+
+                Task.WaitAll(tasks.ToArray());
+            }
+            catch (Exception ex)
+            {
+                //  Don't care  about  aborted tasks
+            }
+
+
+            List<string> toRemove = _downloads.Select(d => d.Id).ToList();
+            
+            foreach(string id in toRemove)
+            {
+                Remove(id);
+            }
+        }
+
+        public  bool IsFileNameUsed(string fullPath)
+        {
+            ICollection <TwitchVideoDownload> downloads = _downloads.Where(d => d.DownloadState == DownloadState.Downloading ||  d.DownloadState  == DownloadState.Queued)  as ICollection<TwitchVideoDownload>;
+
+            foreach (TwitchVideoDownload download in  downloads)
+            {
+                if (download.DownloadParams.FullPath.Equals(fullPath, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void  FireIsAuthorizedChanged()
+        {
+            _runtimeDataService.RuntimeData.AccessToken = _twitchAuthInfo?.AccessToken;
+            _runtimeDataService.Save();
+
+            FirePropertyChanged(nameof(IsAuthorized));
+            _eventAggregator.GetEvent<IsAuthorizedChangedEvent>().Publish(IsAuthorized);
+        }
+
+        private void FireVideosCountChanged()
+        {
+            _eventAggregator.GetEvent<VideosCountChangedEvent>().Publish(_videos != null ? _videos.Count : 0);
+        }
+
+        private void FireDownloadsCountChanged()
+        {
+            _eventAggregator.GetEvent<DownloadsCountChangedEvent>().Publish(_downloads != null ? _downloads.Count :  0);
+        }
+
+        protected  virtual  void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    _downloadTimer.Dispose();
+                }
+
+                _videos = null;
+                _downloads = null;
+                _downloadTasks = null;
+
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
 
         #endregion მეთოდები
 
@@ -1229,6 +1395,8 @@ namespace VideoLeecher.services.Services
         {
             FireDownloadsCountChanged();
         }
+
+
 
 
         #endregion ივენთ_ჰენდლერი

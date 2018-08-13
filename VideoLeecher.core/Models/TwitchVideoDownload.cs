@@ -33,6 +33,9 @@ namespace VideoLeecher.core.Models
 
         private object _isProcessingLockObject;
 
+        private bool _isIndeterminate;
+        private readonly object _isIndeterminateLockObject;
+
         #endregion ველები
 
         #region  კონსტრუქტორები
@@ -206,7 +209,7 @@ namespace VideoLeecher.core.Models
         {
             lock (_isIndeterminateLockObject)
             {
-                IsIndeterminate = isIndeterminate;
+                _isIndeterminate = isIndeterminate;
             }
         }
 

@@ -40,7 +40,7 @@ namespace VideoLeecher.services.Interfaces
 
         void Pause();
 
-        bool Resume();
+        void Resume();
 
         bool CanShutdown();
 

@@ -2,8 +2,8 @@ D:\CSharpStuff\VideoLeecher\VideoLeecher.core\bin\Debug\VideoLeecher.core.dll
 D:\CSharpStuff\VideoLeecher\VideoLeecher.core\bin\Debug\VideoLeecher.core.pdb
 D:\CSharpStuff\VideoLeecher\VideoLeecher.core\bin\Debug\VideoLeecher.shared.dll
 D:\CSharpStuff\VideoLeecher\VideoLeecher.core\bin\Debug\VideoLeecher.shared.pdb
-D:\CSharpStuff\VideoLeecher\VideoLeecher.core\obj\Debug\VideoLeecher.core.csprojResolveAssemblyReference.cache
+D:\CSharpStuff\VideoLeecher\VideoLeecher.core\obj\Debug\VideoLeecher.core.csprojAssemblyReference.cache
 D:\CSharpStuff\VideoLeecher\VideoLeecher.core\obj\Debug\VideoLeecher.core.csproj.CoreCompileInputs.cache
+D:\CSharpStuff\VideoLeecher\VideoLeecher.core\obj\Debug\VideoLeecher.core.csproj.CopyComplete
 D:\CSharpStuff\VideoLeecher\VideoLeecher.core\obj\Debug\VideoLeecher.core.dll
 D:\CSharpStuff\VideoLeecher\VideoLeecher.core\obj\Debug\VideoLeecher.core.pdb
-D:\CSharpStuff\VideoLeecher\VideoLeecher.core\obj\Debug\VideoLeecher.core.csprojAssemblyReference.cache

@@ -93,6 +93,7 @@
     <Compile Include="Services\Processing\ProcessingService.cs" />
     <Compile Include="Services\RuntimeDataService.cs" />
     <Compile Include="Services\TwitchService.cs" />
+    <Compile Include="Services\UpdateService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\Libraries\ffmpeg_x64.exe">

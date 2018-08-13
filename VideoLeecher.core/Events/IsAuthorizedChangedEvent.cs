@@ -3,7 +3,7 @@
 
 namespace VideoLeecher.core.Events
 {
-    class IsAuthorizedChangedEvent : PubSubEvent<bool>
+    public class IsAuthorizedChangedEvent : PubSubEvent<bool>
     {
     }
 }
